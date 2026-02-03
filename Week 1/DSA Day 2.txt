@@ -1,0 +1,54 @@
+﻿Q.4 Missing Number
+https://leetcode.com/problems/missing-number/
+
+
+class Solution:
+   def missingNumber(self, nums: List[int]) -> int:
+       n = len(nums)
+       sum = 0
+       total_sum = n * (n+1) // 2
+       for i in range(0,len(nums)):
+           sum += nums[i]
+      
+       return total_sum - sum
+TC: O(n)
+SC: O(1) 
+
+
+Q.5 Find Peak Element
+https://leetcode.com/problems/find-peak-element/
+
+
+class Solution:
+   def findPeakElement(self, nums: List[int]) -> int:
+       if len(nums) == 1:
+           return 0
+       max_num = nums[0]
+       for i in range(0,len(nums)):
+           if nums[i] > max_num:
+               max_num = nums[i]
+
+
+       for j in range(0,len(nums)):
+           if max_num == nums[j]:
+               return j  
+TC: O(n)
+SC: O(1) 
+
+
+Q.6 Search a 2D Matrix
+https://leetcode.com/problems/search-a-2d-matrix/description/
+
+
+class Solution:
+   def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+       rows = len(matrix)
+       cols = len(matrix[0])
+
+
+       for i in range(0,rows):
+           for j in range(0,cols):
+               if matrix[i][j] == target:
+                   return True
+      
+       return False                                TC: O(n2)          SC:O(1)
