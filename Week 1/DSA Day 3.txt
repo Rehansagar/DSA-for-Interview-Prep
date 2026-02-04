@@ -1,0 +1,43 @@
+﻿Q,1 Binary Search
+def binarySearch(arr,target):
+ start = 0
+ end = len(arr) - 1
+ while start < end:
+   mid = start + (end - start) // 2
+   if target == arr[mid]:
+     return mid
+   elif target < arr[mid]:
+     start = mid + 1
+   else:
+     end = mid - 1
+ return -1
+
+
+Q.2 Decimal to Binary 
+
+
+def toBinary(N):
+   binary = 0
+   pow = 1
+   while N > 0:
+       remainder = N % 2
+       binary = binary + (remainder * pow)
+       N = N // 2
+       pow = pow * 10
+   return binary
+toBinary(7)
+
+
+Q.3 Binary to Decimal
+
+
+def toDecimal(n):
+ decimal = 0
+ pow = 1
+ while n > 0:
+   last_digit = n % 10
+   decimal = decimal + (last_digit * pow)
+   n = n // 10
+   pow = pow * 2
+ return decimal
+print(toDecimal(10))
