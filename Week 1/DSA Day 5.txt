@@ -1,0 +1,77 @@
+﻿TASK OF CLASS 2
+
+
+Q.1 Rotate Array
+https://leetcode.com/problems/rotate-array/
+
+
+class Solution:
+   def reverse(self, nums: List[int],i:int,j:int):
+       while i < j:
+           nums[i],nums[j] = nums[j], nums[i]
+           i += 1
+           j -= 1
+       return nums
+
+
+   def rotate(self, nums: List[int], k: int) -> None:
+       n = len(nums)
+       k = k%n
+
+
+       # Entire list reversed
+       self.reverse(nums,0,n-1)
+
+
+       # First part of list reversed
+       self.reverse(nums,0,k-1)
+
+
+       # Second part of list reversed
+       self.reverse(nums,k,n-1)
+
+
+      
+  
+
+
+
+
+
+Q.2 Find Duplicate Number
+
+
+https://leetcode.com/problems/find-the-duplicate-number/description/
+Optimised Approach
+
+
+class Solution:
+   def findDuplicate(self, nums: List[int]) -> int:
+       slow = fast = nums[0]
+       while True:
+           slow = nums[slow]
+           fast = nums[nums[fast]]
+
+
+           if slow == fast:
+               break
+       slow = nums[0]
+       while slow != fast:
+           slow = nums[slow]
+           fast = nums[fast]
+
+
+       return fast
+
+
+
+
+  
+
+Brute Force Approach
+class Solution:
+   def findDuplicate(self, nums: List[int]) -> int:
+       nums.sort()
+       for i in range(1,len(nums)):
+           if nums[i] == nums[i-1]:
+               return nums[i]
