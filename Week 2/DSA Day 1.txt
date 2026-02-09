@@ -1,0 +1,89 @@
+﻿Recursion
+
+
+Q.1 Fibonacci Series (Iterative Approach)
+
+
+def fibonacci(n):
+
+
+ if n < 3:
+   return n
+
+
+ first = 1
+ second = 2
+ third = 0
+ for i in range(3,n+1):
+   third = first + second
+   first = second
+   second = third
+ return second
+
+
+Fibonacci Series (Recursive Approach)
+
+
+def fib(n):
+ if n < 2:
+   return n
+ else:
+   return fib(n-1) + fib(n-2)
+
+
+Q.2 Sum of Digit (Recursive Approach)
+
+
+def SOD(n):
+ if n < 10:
+   return n
+ else:
+   return n % 10 + SOD(n//10)
+
+
+Q.3 Power of number (Iterative Approach)
+
+
+def power2(a,n):
+ ans = 1
+ for i in range(n,0,-1):
+   ans = ans * a
+ return ans
+print(power2(3,3))
+
+
+Power of number (Recursive Approach)
+
+
+def power(a,n):
+ if n == 0:
+   return 1
+ else:
+   return a * power(a,n-1)
+
+
+Q.4 Climbing Stairs (Recursive Approach)
+https://leetcode.com/problems/climbing-stairs/description/
+
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n < 4:
+            return n
+        return self.climbStairs(n-1) + self.climbStairs(n-2)
+        
+Climbing Stairs (Iterative Approach)
+
+
+class Solution:
+   def climbStairs(self, n: int) -> int:
+       if n < 3:
+           return n
+       first = 1
+       second = 2
+       third = 0
+       for i in range(3,n+1):
+           third = first + second
+           first = second
+           second = third
+       return third
