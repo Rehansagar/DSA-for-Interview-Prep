@@ -1,0 +1,52 @@
+﻿Q.1 Power of (x,n) (Optimised Approach using recursion)
+https://leetcode.com/problems/powx-n/
+
+
+class Solution:
+   def myPow(self, x: float, n: int) -> float:
+       if n == 0:
+           return 1
+       elif n == 1:
+           return x
+       elif n < 0:
+           n = -n
+           x = 1/x
+           return self.myPow(x,n)
+       else:
+           mid = n // 2
+           result = self.myPow(x,mid)
+           finalResult = result * result
+      
+           if n % 2 == 0:
+               return finalResult
+           else:
+               return x * finalResult
+
+
+
+
+Q.2 Binary Search using Recursion (TLE Error)
+https://leetcode.com/problems/binary-search/
+
+
+class Solution:
+   def binarySearch(self,nums:List[int], target: int, start: int, end: int) -> int:
+       start = 0
+       end = len(nums)
+
+
+       while start <= end:
+           mid = start + (end - start) // 2
+
+
+           if target == nums[mid]:
+               return mid
+           elif nums[mid] >= target:
+               self.binarySearch(nums,target,start,mid-1)
+           else:
+               self.binarySearch(nums,target,mid+1,end)
+       return -1
+
+
+   def search(self, nums: List[int], target: int) -> int:
+       self.binarySearch(nums,target,0,len(nums))
