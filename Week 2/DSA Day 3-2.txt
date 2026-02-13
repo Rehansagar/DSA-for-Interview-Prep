@@ -1,0 +1,64 @@
+﻿Q.1 Subsets
+https://leetcode.com/problems/subsets/
+
+
+class Solution:
+   def subsetRecurrence(self,nums,idx,res,subset):
+       if idx == len(nums):
+           res.append(list(subset))
+           return
+      
+       subset.append(nums[idx])
+       self.subsetRecurrence(nums,idx+1,res,subset)
+
+
+       subset.pop()
+
+
+       self.subsetRecurrence(nums,idx+1,res,subset)
+
+
+   def subsets(self, nums: List[int]) -> List[List[int]]:
+       res = []
+       subset = []
+
+
+       self.subsetRecurrence(nums,0,res,subset)
+       return res
+
+
+      
+
+
+Q.2 Combination Sum
+https://leetcode.com/problems/combination-sum/
+
+
+class Solution:
+   def combination(self,idx,candidate,target,combine,ans):
+       if target == 0:
+           ans.append(combine.copy())
+           return
+
+
+       if idx == len(candidate) or target < 0:
+           return
+      
+       # Append First Element
+       combine.append(candidate[idx])
+
+
+       self.combination(idx,candidate,target - candidate[idx],combine,ans)
+
+
+       combine.pop()
+
+
+       self.combination(idx+1,candidate,target,combine,ans)
+
+
+   def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+       combine = []
+       ans = []
+       self.combination(0,candidates,target,combine,ans)
+       return ans
