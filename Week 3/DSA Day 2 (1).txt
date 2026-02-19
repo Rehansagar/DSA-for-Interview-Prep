@@ -1,0 +1,120 @@
+﻿Q.1 Spiral Matrix
+https://leetcode.com/problems/spiral-matrix
+
+
+class Solution:
+   def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+       row = len(matrix)
+       col = len(matrix[0])
+
+
+       left,right = 0,col - 1
+       top,bottom = 0,row - 1
+
+
+       result = []
+       while left <= right and top <= bottom:
+           for cols in range(left,right+1):
+               result.append(matrix[top][cols])
+           top += 1
+
+
+           for rows in range(top,bottom+1):
+               result.append(matrix[rows][right])
+           right -= 1
+
+
+           if top <= bottom:
+               for cols in range(right,left-1,-1):
+                   result.append(matrix[bottom][cols])
+               bottom -= 1
+           if left <= right:
+               for rows in range(bottom,top-1,-1):
+                   result.append(matrix[rows][left])
+               left += 1
+       return result
+
+
+TC → O(n2)
+SC → O(n)
+
+
+Q.2 Majority Element Using Hash Map
+
+
+from collections import Counter
+class Solution:
+   def majorityElement(self, nums: List[int]) -> int:
+       freq_table = Counter(nums)
+       n = len(nums)
+
+
+       for key in freq_table:
+           if freq_table[key] > n // 2:
+               return key     
+
+
+TC → O(n)
+SC → O(n)
+
+
+Q.3 Find Duplicate Number Using Hash Map
+
+
+This question we have solved using optimised approach by using Cycle Detection Method or Hare - Tortoise Algo.Using HashMap increase the space complexity of problem.
+
+
+https://leetcode.com/problems/find-the-duplicate-number/
+
+
+from collections import Counter
+class Solution:
+   def findDuplicate(self, nums: List[int]) -> int:
+       freq_table = Counter(nums)
+
+
+       for key in freq_table:
+           if freq_table[key] > 1:
+               return key
+
+
+TC → O(n)
+SC → O(n)
+
+
+Q.4 Contains Duplicate?
+
+
+https://leetcode.com/problems/contains-duplicate/
+
+
+from collections import Counter
+class Solution:
+   def containsDuplicate(self, nums: List[int]) -> bool:
+       freq_table = Counter(nums)
+
+
+       for key in freq_table:
+           if freq_table[key] > 1:
+               return True
+       return False
+
+
+TC → O(n)
+SC → O(n)
+
+
+Q.5 Contains Duplicate?
+ 
+https://leetcode.com/problems/contains-duplicate/
+
+
+class Solution:
+   def containsDuplicate(self, nums: List[int]) -> bool:
+       nums1 = list(set(nums))
+       if len(nums) != len(nums1):
+           return True
+       return False
+      
+TC → O(n)
+SC → O(n)
