@@ -1,0 +1,111 @@
+﻿Implementation of Class Node:
+
+
+class Node:
+ def __init__(self,data):
+   self.data = data
+   self.next = None
+Q.1 Insert at the End of the Linked List
+https://www.geeksforgeeks.org/problems/linked-list-insertion-1587115620/1
+
+
+class Solution:
+   def insertAtEnd(self, head, x):
+       # Create a Node
+       newNode = Node(x)
+      
+       # if ll is empty
+       if head == None:
+           head = newNode
+           return head
+      
+       # Make temp node as Last and initilize at the first
+       last = head
+      
+       # Traverse the entire linked list until not reach by the last node
+      
+       while (last.next != None):
+           last = last.next
+      
+       last.next = newNode
+      
+       return head
+Q.2 Insert Node at Beginning of Linked List
+https://www.geeksforgeeks.org/problems/linked-list-insertion-at-beginning/0
+
+
+class Solution:
+   def insertAtFront(self, head, x):
+       # Creation of a Node
+       newNode = Node(x)
+      
+       # Connect newNode to Head
+       newNode.next = head
+      
+       # Give newNode name as Head
+       head = newNode
+      
+       # Return Head
+       return head
+
+
+Q.3 Delete First Node of Linked List
+https://www.geeksforgeeks.org/problems/delete-head-of-linked-list/1
+
+
+class Solution:
+   def deleteHead(self, head):
+       # Initilize second node as a Head
+       head = head.next
+       return head
+Q.4 Delete Last Node of Linked List
+https://www.geeksforgeeks.org/problems/deletion-at-the-end-of-a-linked-list/1
+
+
+class Solution:
+   def removeLastNode(self, head):
+       # Make temp Node as a last
+       last = head
+      
+       # Edge condition if there is no element
+       if head == None:
+           return head
+          
+       # Edge condition if there is only 1 element 
+       if head.next == None:
+           head = None
+           return head
+      
+       # Traverse node till second last
+       while (last.next.next != None):
+           last = last.next
+          
+       # Now we are at last node
+       # Make this node as None
+       last.next = None
+      
+       return head
+
+
+Q.5 Search Node in Linked List 
+https://www.geeksforgeeks.org/problems/search-in-linked-list-1664434326/1
+
+
+class Solution:
+   def searchKey(self, head, key):
+       searchKey = head
+      
+       if head.next == None:
+           if head.data == key:
+               return True
+           return False
+      
+       while searchKey.next != None:
+           if searchKey.data == key:
+               return True
+           searchKey = searchKey.next
+      
+       if searchKey.next == None:
+           if searchKey.data == key:
+               return True
+           return False
