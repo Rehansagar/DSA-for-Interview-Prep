@@ -1,0 +1,132 @@
+﻿Implementation of Stack using Array
+
+
+class Stack:
+
+
+ def __init__(self,n):
+   self.size = n
+   self.myStack = [None] * n
+   self.top = -1
+
+
+  def isEmpty(self):
+   if self.top == -1:
+     return True
+   return False
+
+
+  def isFull(self):
+   if self.top == self.size:
+     return True
+   return False
+
+
+  def push(self,num):
+   if self.isFull():
+     return "Stack overflow"
+   self.top += 1
+   self.myStack[self.top] = num
+
+
+  def pop(self):
+   if self.isEmpty():
+     return "Stack underflow"
+  
+   value = self.myStack[self.top]
+   self.myStack[self.top] = None
+   self.top -= 1
+   return value
+
+
+  def peek(self):
+   if self.isEmpty():
+     return -1
+   return self.myStack[self.top]
+
+
+  def printElements(self):
+   for i in range(self.top+1):
+     print(self.myStack[i],end=" ")
+
+
+
+
+
+
+
+
+
+
+
+
+#Driver Code
+s = Stack(5)
+s.push(5)
+s.push(10)
+s.push(15)
+s.push(20)
+s.push(25)
+s.pop()
+s.peek()
+s.pop()
+
+
+Q.1 Implement Stack using Array (GFG)
+
+
+https://www.geeksforgeeks.org/problems/implement-stack-using-array/1
+
+
+class myStack:
+    def __init__(self,n):
+        # Define Data Structures
+        self.size = n
+        self.stack = [None] * n
+        self.top = -1
+
+
+    
+    def isEmpty(self):
+        # Check if stack is empty
+        if self.top == -1:
+            return True
+        return False
+
+
+    
+    def isFull(self):
+        # Check if stack is full
+        if self.size == self.top + 1:
+            return True
+        return False
+        
+
+
+    
+    def push(self, x):
+        # Insert x at the top of the stack
+        if self.top == self.size:
+            return "Stack Overflow"
+        self.top += 1
+        self.stack[self.top] = x
+
+
+    
+    def pop(self):
+        # Removes an element from the top of the stack
+        if self.top == -1:
+            return "Stack underflow"
+        else:
+            value = self.stack[self.top]
+            self.stack[self.top] = None
+            self.top -= 1
+            return value
+
+
+    
+    def peek(self):
+        # Returns the top element of the stack
+        if self.isEmpty():
+            return -1
+        return self.stack[self.top]
